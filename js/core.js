@@ -1,6 +1,6 @@
 var resolution = 15;
-var canvasWidth = 600;
-var canvasHeight = 450;
+var canvasWidth = 660;
+var canvasHeight = 420;
 
 var COLS = canvasWidth / resolution;
 var ROWS = canvasHeight / resolution;
