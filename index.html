@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conway's Game of Life</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="sidebar">
+            <h2>Game Rules</h2>
+            
+            <div class="rule-box">
+                <p><strong>1. Underpopulation</strong></p>
+                <p class="desc">Dies if neighbors < 2.</p>
+                <div class="example">
+                    <div class="mini-grid">
+                        <div></div> <div></div> <div></div>
+                        <div></div> <div class="alive"></div> <div></div>
+                        <div></div> <div></div> <div class="alive"></div>
+                    </div>
+                    <span class="arrow">➔</span>
+                    <div class="mini-grid">
+                        <div></div> <div></div> <div></div>
+                        <div></div> <div class="dead"></div> <div></div>
+                        <div></div> <div></div> <div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-box">
+                <p><strong>2. Overpopulation</strong></p>
+                <p class="desc">Dies if neighbors > 3.</p>
+                <div class="example">
+                    <div class="mini-grid">
+                        <div></div> <div class="alive"></div> <div></div>
+                        <div class="alive"></div> <div class="alive"></div> <div class="alive"></div>
+                        <div></div> <div class="alive"></div> <div></div>
+                    </div>
+                    <span class="arrow">➔</span>
+                    <div class="mini-grid">
+                        <div class="alive"></div> <div class="alive"></div> <div class="alive"></div>
+                        <div class="alive"></div> <div class="dead"></div> <div class="alive"></div>
+                        <div class="alive"></div> <div class="alive"></div> <div class="alive"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-box">
+                <p><strong>3. Survival</strong></p>
+                <p class="desc">Lives if neighbors is 2 or 3.</p>
+                <div class="example">
+                    <div class="mini-grid">
+                        <div></div> <div></div> <div class="alive"></div>
+                        <div></div> <div class="alive"></div> <div></div>
+                        <div class="alive"></div> <div></div> <div></div>
+                    </div>
+                    <span class="arrow">➔</span>
+                    <div class="mini-grid">
+                        <div></div> <div></div> <div></div>
+                        <div></div> <div class="alive"></div> <div></div>
+                        <div></div> <div></div> <div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-box">
+                <p><strong>4. Reproduction</strong></p>
+                <p class="desc">Born if neighbors is exactly 3.</p>
+                <div class="example">
+                    <div class="mini-grid">
+                        <div class="alive"></div> <div></div> <div></div>
+                        <div></div> <div></div> <div class="alive"></div>
+                        <div></div> <div class="alive"></div> <div></div>
+                    </div>
+                    <span class="arrow">➔</span>
+                    <div class="mini-grid">
+                        <div></div> <div></div> <div></div>
+                        <div></div> <div class="born"></div> <div></div>
+                        <div></div> <div></div> <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h1>Conway's Game of Life</h1>
+        
+            <div class="controls">
+                <button onclick="startGame()">Start</button>
+                <button class="stop" onclick="stopGame()">Stop</button>
+                <button class="clear" onclick="randomizeGrid()">Random</button>
+                <button class="clear" onclick="clearGrid()">Clear</button>
+            </div>
+        
+            <canvas id="gameCanvas"></canvas>
+            
+            <div class="speed-controls">
+                <span>Speed:</span>
+                <button class="speed-btn" id="btn-0.5" onclick="setSpeed(0.5)">0.5x</button>
+                <button class="speed-btn active" id="btn-1" onclick="setSpeed(1)">1.0x</button>
+                <button class="speed-btn" id="btn-2" onclick="setSpeed(2)">2.0x</button>
+                <button class="speed-btn" id="btn-4" onclick="setSpeed(4)">4.0x</button>
+            </div>
+            
+            <p class="info">© 2025 Akbar-Kurnia1. All rights reserved.</p>
+        </div>
+
+        <div class="sidebar right-sidebar">
+            <h2>Pattern Presets</h2>
+            <p class="desc">Click to spawn famous patterns.</p>
+
+            <button class="preset-btn" onclick="spawnGlider()">
+                <strong>Glider</strong>
+                <span>Spaceship (Moves)</span>
+            </button>
+
+            <button class="preset-btn" onclick="spawnPulsar()">
+                <strong>Pulsar</strong>
+                <span>Oscillator (Explodes)</span>
+            </button>
+
+            <button class="preset-btn" onclick="spawnGosperGun()">
+                <strong>Gosper Glider Gun</strong>
+                <span>Factory (Creates Gliders)</span>
+            </button>
+        </div>
+
+    </div>
+
+    <script src="js/core.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/presets.js"></script>
+</body>
+</html>
