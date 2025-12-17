@@ -7,18 +7,13 @@ var gameTimer = null;
 var baseSpeed = 200;
 var currentSpeedDelay = baseSpeed;
 
-
 function drawGrid() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (var col = 0; col < COLS; col++) {
         for (var row = 0; row < ROWS; row++) {
             var cell = grid[col][row];
             ctx.beginPath();
-            if (cell === 1) {
-                ctx.fillStyle = '#ffffff';
-            } else {
-                ctx.fillStyle = '#000000';
-            }
+            ctx.fillStyle = cell ? '#ffffff' : '#000000';
             ctx.fillRect(col * resolution, row * resolution, resolution - 1, resolution - 1);
         }
     }
@@ -71,9 +66,7 @@ function setSpeed(multiplier) {
     }
     
     var activeButton = document.getElementById('btn-' + multiplier);
-    if (activeButton) {
-        activeButton.classList.add('active');
-    }
+    if (activeButton) activeButton.classList.add('active');
 
     if (gameTimer) {
         stopGame();
@@ -83,7 +76,7 @@ function setSpeed(multiplier) {
 
 function clearGrid() {
     stopGame();
-    grid = createEmptyGrid();
+    grid = createEmptyGrid(); 
     drawGrid();
 }
 
@@ -92,14 +85,24 @@ function randomizeGrid() {
     grid = createEmptyGrid();
     for (var col = 0; col < COLS; col++) {
         for (var row = 0; row < ROWS; row++) {
-            if (Math.random() > 0.85) {
-                grid[col][row] = 1;
-            } else {
-                grid[col][row] = 0;
-            }
+            grid[col][row] = (Math.random() > 0.85) ? 1 : 0;
         }
     }
     drawGrid();
+}
+
+function loadFromCoordinates(coords) {
+    clearGrid();
+    
+    if (Array.isArray(coords)) {
+        for (var i = 0; i < coords.length; i++) {
+            var p = coords[i];
+            if (p[0] >= 0 && p[0] < COLS && p[1] >= 0 && p[1] < ROWS) {
+                grid[p[0]][p[1]] = 1;
+            }
+        }
+        drawGrid();
+    }
 }
 
 canvas.addEventListener('mousedown', function(e) {
@@ -110,12 +113,9 @@ canvas.addEventListener('mousedown', function(e) {
     var y = (e.clientY - rect.top) * scaleY;
     var col = Math.floor(x / resolution);
     var row = Math.floor(y / resolution);
+    
     if (col >= 0 && col < COLS && row >= 0 && row < ROWS) {
-        if (grid[col][row] === 1) {
-            grid[col][row] = 0;
-        } else {
-            grid[col][row] = 1;
-        }
+        grid[col][row] = grid[col][row] ? 0 : 1;
         drawGrid();
     }
 });

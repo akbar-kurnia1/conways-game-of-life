@@ -6,7 +6,6 @@ var COLS = canvasWidth / resolution;
 var ROWS = canvasHeight / resolution;
 
 var grid = createEmptyGrid();
-var generation = 0;
 
 function createEmptyGrid() {
     var result = [];

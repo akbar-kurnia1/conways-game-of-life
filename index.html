@@ -111,29 +111,66 @@
         </div>
 
         <div class="sidebar right-sidebar">
-            <h2>Pattern Presets</h2>
-            <p class="desc">Click to spawn famous patterns.</p>
+            
+            <div class="sidebar-scroll-area">
+                <h2>Pattern Presets</h2>
+                <p class="desc">Click to spawn famous patterns.</p>
 
-            <button class="preset-btn" onclick="spawnGlider()">
-                <strong>Glider</strong>
-                <span>Spaceship (Moves)</span>
-            </button>
+                <div id="presetList">
+                    <button class="preset-btn" onclick="spawnGlider()">
+                        <strong>Glider</strong>
+                        <span>Spaceship (Moves)</span>
+                    </button>
 
-            <button class="preset-btn" onclick="spawnPulsar()">
-                <strong>Pulsar</strong>
-                <span>Oscillator (Explodes)</span>
-            </button>
+                    <button class="preset-btn" onclick="spawnPulsar()">
+                        <strong>Pulsar</strong>
+                        <span>Oscillator (Explodes)</span>
+                    </button>
 
-            <button class="preset-btn" onclick="spawnGosperGun()">
-                <strong>Gosper Glider Gun</strong>
-                <span>Factory (Creates Gliders)</span>
-            </button>
+                    <button class="preset-btn" onclick="spawnGosperGun()">
+                        <strong>Gosper Glider Gun</strong>
+                        <span>Factory (Creates Gliders)</span>
+                    </button>
+                </div>
+
+                <h3 style="margin-top: 20px; color: #eee; border-top: 1px dashed #444; padding-top: 15px;">
+                    My Saved Patterns
+                </h3>
+                
+                <div id="userPresetList"></div>
+                <div style="height: 20px;"></div>
+            </div>
+
+            <div class="sidebar-fixed-area">
+                <h2>Custom Pattern</h2>
+                <p class="desc">Draw on grid, then Save.</p>
+                
+                <button class="preset-btn save-btn" onclick="saveCustomPreset()">
+                    <strong>💾 Save to Presets</strong>
+                </button>
+            </div>
+
         </div>
 
+    </div>
+
+    <div id="toast" class="toast-notification">Notification Message</div>
+
+    <div id="saveModal" class="modal-overlay">
+        <div class="modal-box">
+            <h3>Save Pattern</h3>
+            <input type="text" id="inputTitle" class="modal-input" placeholder="Pattern Name (Required)">
+            <input type="text" id="inputDesc" class="modal-input" placeholder="Description (Optional)">
+            <div class="modal-buttons">
+                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button class="btn-confirm" onclick="confirmSave()">Save</button>
+            </div>
+        </div>
     </div>
 
     <script src="js/core.js"></script>
     <script src="js/script.js"></script>
     <script src="js/presets.js"></script>
+    <script src="js/storage.js"></script>
 </body>
 </html>
