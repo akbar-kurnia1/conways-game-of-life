@@ -33,6 +33,7 @@ Berdasarkan implementasi saat ini, fitur yang tersedia meliputi:
 * **Kontrol Simulasi:** Tombol Start, Stop, Randomize (Acak), dan Clear (Bersihkan).
 * **Pengatur Kecepatan:** Opsi kecepatan simulasi (0.5x, 1.0x, 2.0x, 4.0x).
 * **Pattern Presets:** Pilihan cepat untuk memunculkan pola terkenal dari Lexicon (Glider, Pulsar, Gosper Glider Gun).
+* **Custom Pattern:** Pilihan untuk menyimpan hasil gambar sel pada grid yang disimpan pada storage browser.
 * **Responsive Canvas:** Menggunakan sistem koordinat yang presisi pada ukuran layar yang berbeda.
 
 ## 📂 Struktur Repositori
@@ -46,7 +47,8 @@ Direktori ini diatur dengan pemisahan logika (*Separation of Concerns*) agar kod
 ├── js/
 │   ├── core.js         # Logika matematika grid & konfigurasi global
 │   ├── presets.js      # Kumpulan pola (Glider, Pulsar, dll)
-│   └── script.js       # Interaksi DOM & Loop animasi utama
+│   ├── script.js       # Interaksi DOM & Loop animasi utama
+|   └── storage.js      # UI & Penyimpanan Data (Storage)
 └── index.html          # Halaman utama
 ```
 
@@ -103,4 +105,4 @@ Repositori ini terbuka untuk pengembangan lebih lanjut. Jika Anda ingin menambah
 * GitHub: [@akbar-kurnia1](https://github.com/akbar-kurnia1)
 
 ---
-*Dibuat untuk keperluan pembelajaran algoritma dan pengembangan web.*
+*Dibuat untuk keperluan pembelajaran algoritma dengan teknik reverse engineering dan pengembangan web.*
